@@ -215,9 +215,12 @@ function CycleDiagram({ data }: { data: DiagramData }) {
   );
 }
 
-export default function Diagram({ data }: { data: DiagramData }) {
+export default function Diagram({ data, naked = false }: { data: DiagramData; naked?: boolean }) {
+  const baseClass = naked 
+    ? "p-2" 
+    : "rounded-xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/40 shadow-sm";
   return (
-    <figure className="rounded-xl border border-slate-200 bg-white/70 p-4 dark:border-slate-700/70 dark:bg-slate-900/40">
+    <figure className={baseClass}>
       {data.kind === "cycle" ? <CycleDiagram data={data} /> : <FlowDiagram data={data} />}
       {data.caption && (
         <figcaption className="mt-3 text-center text-xs leading-relaxed text-slate-500 dark:text-slate-400">

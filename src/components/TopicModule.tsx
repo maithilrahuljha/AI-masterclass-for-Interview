@@ -7,9 +7,9 @@ import {
 import { TOPICS } from "../data/topics";
 import { QUESTIONS } from "../data/questions";
 import { useApp } from "../state/AppContext";
-import Diagram from "./Diagram";
 import CodeBlock from "./CodeBlock";
 import QuestionCard from "./QuestionCard";
+import ConceptArt from "./ConceptArt";
 import { TOPIC_ICONS } from "./icons";
 
 function SectionTitle({ icon: Icon, children }: { icon: React.ElementType; children: React.ReactNode }) {
@@ -142,12 +142,14 @@ export default function TopicModule() {
                   <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{c.explanation}</p>
                   <div className="mt-4 rounded-lg border border-emerald-200/60 bg-emerald-50/60 p-3.5 dark:border-emerald-500/20 dark:bg-emerald-950/25">
                     <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-                      <Landmark className="h-3.5 w-3.5" aria-hidden="true" /> Telecom / audit example
+                      <Landmark className="h-3.5 w-3.5" aria-hidden="true" /> Example from Telecom industry
                     </p>
                     <p className="mt-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">{c.example}</p>
                   </div>
                 </div>
-                <Diagram data={c.diagram} />
+                <div className="relative flex flex-col justify-center overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 dark:border-slate-800 dark:from-slate-900 dark:to-slate-950">
+                  <ConceptArt topicId={topic.id} conceptIndex={i} />
+                </div>
               </div>
             </article>
           ))}
