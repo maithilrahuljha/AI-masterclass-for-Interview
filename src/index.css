@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  letter-spacing: -0.015em;
+}
+
+/* ---------- Diagram (inline SVG) theming ---------- */
+.dg-node { fill: #eef2ff; stroke: #6366f1; stroke-width: 1.4; }
+.dg-node-accent { fill: #fef3c7; stroke: #d97706; stroke-width: 1.4; }
+.dg-text { fill: #1e293b; font-size: 12px; font-weight: 600; font-family: ui-sans-serif, system-ui, sans-serif; }
+.dg-text-accent { fill: #92400e; }
+.dg-arrow { stroke: #94a3b8; stroke-width: 1.6; fill: none; }
+.dg-arrowhead { fill: #94a3b8; stroke: none; }
+.dark .dg-node { fill: #191c3f; stroke: #818cf8; }
+.dark .dg-node-accent { fill: #431d07; stroke: #f59e0b; }
+.dark .dg-text { fill: #e2e8f0; }
+.dark .dg-text-accent { fill: #fcd34d; }
+.dark .dg-arrow { stroke: #64748b; }
+.dark .dg-arrowhead { fill: #64748b; }
+
+/* ---------- Code blocks ---------- */
+.code-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.code-scroll::-webkit-scrollbar { height: 8px; }
+.code-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+
+/* ---------- Thin scrollbars for sidebar ---------- */
+.thin-scroll::-webkit-scrollbar { width: 6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.4); border-radius: 3px; }
+
+/* ---------- Flash highlight when jumping to a question ---------- */
+@keyframes flash-q {
+  0% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+  25% { box-shadow: 0 0 0 6px rgba(217, 119, 6, 0.35); }
+  100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+}
+.flash-q { animation: flash-q 1.6s ease-out 2; }
+
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection { background: rgba(99, 102, 241, 0.25); }
